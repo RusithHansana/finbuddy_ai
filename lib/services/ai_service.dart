@@ -120,8 +120,7 @@ class AIService {
   /// Generate a conversation title from the first message
   Future<String> generateConversationTitle(String firstMessage) async {
     try {
-      final prompt =
-          '''
+      final prompt = '''
 Based on this message, generate a short, descriptive title (max 6 words):
 "$firstMessage"
 

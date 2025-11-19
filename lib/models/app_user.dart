@@ -38,7 +38,7 @@ sealed class AppUser with _$AppUser {
       incomeFrequency: data['incomeFrequency'] as String?,
       financialGoals:
           (data['financialGoals'] as List?)?.map((e) => e as String).toList() ??
-          [],
+              [],
       context: (data['context'] as Map<String, dynamic>?) ?? {},
       notificationsEnabled: data['notificationsEnabled'] as bool? ?? true,
       createdAt: (data['createdAt'] as Timestamp?)?.toDate(),

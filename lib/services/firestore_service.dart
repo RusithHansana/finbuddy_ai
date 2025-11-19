@@ -21,9 +21,10 @@ class FirestoreService {
   CollectionReference _messagesCollection(
     String userId,
     String conversationId,
-  ) => _conversationsCollection(
-    userId,
-  ).doc(conversationId).collection(AppConstants.messagesCollection);
+  ) =>
+      _conversationsCollection(
+        userId,
+      ).doc(conversationId).collection(AppConstants.messagesCollection);
 
   // ============== USER OPERATIONS ==============
 
@@ -260,13 +261,13 @@ class FirestoreService {
       // Client-side filtering (Firestore doesn't support full-text search)
       return allConversations.where((conversation) {
         final titleMatch = conversation.title.toLowerCase().contains(
-          query.toLowerCase(),
-        );
+              query.toLowerCase(),
+            );
         final messageMatch =
             conversation.lastMessageText?.toLowerCase().contains(
-              query.toLowerCase(),
-            ) ??
-            false;
+                      query.toLowerCase(),
+                    ) ??
+                false;
         return titleMatch || messageMatch;
       }).toList();
     } catch (e) {

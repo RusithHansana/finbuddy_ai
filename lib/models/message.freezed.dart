@@ -14,276 +14,440 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Message {
+  String get id;
+  String get conversationId;
+  String get text;
+  MessageSender get sender;
+  DateTime get timestamp;
+  String? get userId;
+  bool get isStreaming;
 
- String get id; String get conversationId; String get text; MessageSender get sender; DateTime get timestamp; String? get userId; bool get isStreaming;
-/// Create a copy of Message
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$MessageCopyWith<Message> get copyWith => _$MessageCopyWithImpl<Message>(this as Message, _$identity);
+  /// Create a copy of Message
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $MessageCopyWith<Message> get copyWith =>
+      _$MessageCopyWithImpl<Message>(this as Message, _$identity);
 
   /// Serializes this Message to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Message &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.conversationId, conversationId) ||
+                other.conversationId == conversationId) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.sender, sender) || other.sender == sender) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.isStreaming, isStreaming) ||
+                other.isStreaming == isStreaming));
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Message&&(identical(other.id, id) || other.id == id)&&(identical(other.conversationId, conversationId) || other.conversationId == conversationId)&&(identical(other.text, text) || other.text == text)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.isStreaming, isStreaming) || other.isStreaming == isStreaming));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, conversationId, text, sender,
+      timestamp, userId, isStreaming);
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,conversationId,text,sender,timestamp,userId,isStreaming);
-
-@override
-String toString() {
-  return 'Message(id: $id, conversationId: $conversationId, text: $text, sender: $sender, timestamp: $timestamp, userId: $userId, isStreaming: $isStreaming)';
-}
-
-
+  @override
+  String toString() {
+    return 'Message(id: $id, conversationId: $conversationId, text: $text, sender: $sender, timestamp: $timestamp, userId: $userId, isStreaming: $isStreaming)';
+  }
 }
 
 /// @nodoc
-abstract mixin class $MessageCopyWith<$Res>  {
-  factory $MessageCopyWith(Message value, $Res Function(Message) _then) = _$MessageCopyWithImpl;
-@useResult
-$Res call({
- String id, String conversationId, String text, MessageSender sender, DateTime timestamp, String? userId, bool isStreaming
-});
-
-
-
-
+abstract mixin class $MessageCopyWith<$Res> {
+  factory $MessageCopyWith(Message value, $Res Function(Message) _then) =
+      _$MessageCopyWithImpl;
+  @useResult
+  $Res call(
+      {String id,
+      String conversationId,
+      String text,
+      MessageSender sender,
+      DateTime timestamp,
+      String? userId,
+      bool isStreaming});
 }
+
 /// @nodoc
-class _$MessageCopyWithImpl<$Res>
-    implements $MessageCopyWith<$Res> {
+class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
   _$MessageCopyWithImpl(this._self, this._then);
 
   final Message _self;
   final $Res Function(Message) _then;
 
-/// Create a copy of Message
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? conversationId = null,Object? text = null,Object? sender = null,Object? timestamp = null,Object? userId = freezed,Object? isStreaming = null,}) {
-  return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,conversationId: null == conversationId ? _self.conversationId : conversationId // ignore: cast_nullable_to_non_nullable
-as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String,sender: null == sender ? _self.sender : sender // ignore: cast_nullable_to_non_nullable
-as MessageSender,timestamp: null == timestamp ? _self.timestamp : timestamp // ignore: cast_nullable_to_non_nullable
-as DateTime,userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String?,isStreaming: null == isStreaming ? _self.isStreaming : isStreaming // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
+  /// Create a copy of Message
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? conversationId = null,
+    Object? text = null,
+    Object? sender = null,
+    Object? timestamp = null,
+    Object? userId = freezed,
+    Object? isStreaming = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      conversationId: null == conversationId
+          ? _self.conversationId
+          : conversationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      sender: null == sender
+          ? _self.sender
+          : sender // ignore: cast_nullable_to_non_nullable
+              as MessageSender,
+      timestamp: null == timestamp
+          ? _self.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      userId: freezed == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isStreaming: null == isStreaming
+          ? _self.isStreaming
+          : isStreaming // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
-
-}
-
 
 /// Adds pattern-matching-related methods to [Message].
 extension MessagePatterns on Message {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Message value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _Message() when $default != null:
-return $default(_that);case _:
-  return orElse();
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Message value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Message() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Message value)  $default,){
-final _that = this;
-switch (_that) {
-case _Message():
-return $default(_that);}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Message value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Message():
+        return $default(_that);
+    }
+  }
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Message value)?  $default,){
-final _that = this;
-switch (_that) {
-case _Message() when $default != null:
-return $default(_that);case _:
-  return null;
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Message value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Message() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String conversationId,  String text,  MessageSender sender,  DateTime timestamp,  String? userId,  bool isStreaming)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _Message() when $default != null:
-return $default(_that.id,_that.conversationId,_that.text,_that.sender,_that.timestamp,_that.userId,_that.isStreaming);case _:
-  return orElse();
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String id,
+            String conversationId,
+            String text,
+            MessageSender sender,
+            DateTime timestamp,
+            String? userId,
+            bool isStreaming)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Message() when $default != null:
+        return $default(_that.id, _that.conversationId, _that.text,
+            _that.sender, _that.timestamp, _that.userId, _that.isStreaming);
+      case _:
+        return orElse();
+    }
+  }
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String conversationId,  String text,  MessageSender sender,  DateTime timestamp,  String? userId,  bool isStreaming)  $default,) {final _that = this;
-switch (_that) {
-case _Message():
-return $default(_that.id,_that.conversationId,_that.text,_that.sender,_that.timestamp,_that.userId,_that.isStreaming);}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String conversationId,  String text,  MessageSender sender,  DateTime timestamp,  String? userId,  bool isStreaming)?  $default,) {final _that = this;
-switch (_that) {
-case _Message() when $default != null:
-return $default(_that.id,_that.conversationId,_that.text,_that.sender,_that.timestamp,_that.userId,_that.isStreaming);case _:
-  return null;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String id,
+            String conversationId,
+            String text,
+            MessageSender sender,
+            DateTime timestamp,
+            String? userId,
+            bool isStreaming)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Message():
+        return $default(_that.id, _that.conversationId, _that.text,
+            _that.sender, _that.timestamp, _that.userId, _that.isStreaming);
+    }
+  }
 
-}
-}
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
 
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String id,
+            String conversationId,
+            String text,
+            MessageSender sender,
+            DateTime timestamp,
+            String? userId,
+            bool isStreaming)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Message() when $default != null:
+        return $default(_that.id, _that.conversationId, _that.text,
+            _that.sender, _that.timestamp, _that.userId, _that.isStreaming);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
-
 class _Message implements Message {
-  const _Message({required this.id, required this.conversationId, required this.text, required this.sender, required this.timestamp, this.userId, this.isStreaming = false});
-  factory _Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);
+  const _Message(
+      {required this.id,
+      required this.conversationId,
+      required this.text,
+      required this.sender,
+      required this.timestamp,
+      this.userId,
+      this.isStreaming = false});
+  factory _Message.fromJson(Map<String, dynamic> json) =>
+      _$MessageFromJson(json);
 
-@override final  String id;
-@override final  String conversationId;
-@override final  String text;
-@override final  MessageSender sender;
-@override final  DateTime timestamp;
-@override final  String? userId;
-@override@JsonKey() final  bool isStreaming;
+  @override
+  final String id;
+  @override
+  final String conversationId;
+  @override
+  final String text;
+  @override
+  final MessageSender sender;
+  @override
+  final DateTime timestamp;
+  @override
+  final String? userId;
+  @override
+  @JsonKey()
+  final bool isStreaming;
 
-/// Create a copy of Message
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$MessageCopyWith<_Message> get copyWith => __$MessageCopyWithImpl<_Message>(this, _$identity);
+  /// Create a copy of Message
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MessageCopyWith<_Message> get copyWith =>
+      __$MessageCopyWithImpl<_Message>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$MessageToJson(this, );
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MessageToJson(
+      this,
+    );
+  }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Message&&(identical(other.id, id) || other.id == id)&&(identical(other.conversationId, conversationId) || other.conversationId == conversationId)&&(identical(other.text, text) || other.text == text)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.timestamp, timestamp) || other.timestamp == timestamp)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.isStreaming, isStreaming) || other.isStreaming == isStreaming));
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Message &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.conversationId, conversationId) ||
+                other.conversationId == conversationId) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.sender, sender) || other.sender == sender) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.isStreaming, isStreaming) ||
+                other.isStreaming == isStreaming));
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,id,conversationId,text,sender,timestamp,userId,isStreaming);
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, conversationId, text, sender,
+      timestamp, userId, isStreaming);
 
-@override
-String toString() {
-  return 'Message(id: $id, conversationId: $conversationId, text: $text, sender: $sender, timestamp: $timestamp, userId: $userId, isStreaming: $isStreaming)';
-}
-
-
+  @override
+  String toString() {
+    return 'Message(id: $id, conversationId: $conversationId, text: $text, sender: $sender, timestamp: $timestamp, userId: $userId, isStreaming: $isStreaming)';
+  }
 }
 
 /// @nodoc
 abstract mixin class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
-  factory _$MessageCopyWith(_Message value, $Res Function(_Message) _then) = __$MessageCopyWithImpl;
-@override @useResult
-$Res call({
- String id, String conversationId, String text, MessageSender sender, DateTime timestamp, String? userId, bool isStreaming
-});
-
-
-
-
+  factory _$MessageCopyWith(_Message value, $Res Function(_Message) _then) =
+      __$MessageCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String conversationId,
+      String text,
+      MessageSender sender,
+      DateTime timestamp,
+      String? userId,
+      bool isStreaming});
 }
+
 /// @nodoc
-class __$MessageCopyWithImpl<$Res>
-    implements _$MessageCopyWith<$Res> {
+class __$MessageCopyWithImpl<$Res> implements _$MessageCopyWith<$Res> {
   __$MessageCopyWithImpl(this._self, this._then);
 
   final _Message _self;
   final $Res Function(_Message) _then;
 
-/// Create a copy of Message
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? conversationId = null,Object? text = null,Object? sender = null,Object? timestamp = null,Object? userId = freezed,Object? isStreaming = null,}) {
-  return _then(_Message(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,conversationId: null == conversationId ? _self.conversationId : conversationId // ignore: cast_nullable_to_non_nullable
-as String,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String,sender: null == sender ? _self.sender : sender // ignore: cast_nullable_to_non_nullable
-as MessageSender,timestamp: null == timestamp ? _self.timestamp : timestamp // ignore: cast_nullable_to_non_nullable
-as DateTime,userId: freezed == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
-as String?,isStreaming: null == isStreaming ? _self.isStreaming : isStreaming // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
-}
-
-
+  /// Create a copy of Message
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? conversationId = null,
+    Object? text = null,
+    Object? sender = null,
+    Object? timestamp = null,
+    Object? userId = freezed,
+    Object? isStreaming = null,
+  }) {
+    return _then(_Message(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      conversationId: null == conversationId
+          ? _self.conversationId
+          : conversationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      sender: null == sender
+          ? _self.sender
+          : sender // ignore: cast_nullable_to_non_nullable
+              as MessageSender,
+      timestamp: null == timestamp
+          ? _self.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      userId: freezed == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isStreaming: null == isStreaming
+          ? _self.isStreaming
+          : isStreaming // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 // dart format on

@@ -16,15 +16,15 @@ final class AuthServiceProvider
     extends $FunctionalProvider<AuthService, AuthService, AuthService>
     with $Provider<AuthService> {
   const AuthServiceProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'authServiceProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'authServiceProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$authServiceHash();
@@ -53,24 +53,20 @@ String _$authServiceHash() => r'82398d9f38c720e4ddf6b218248f15089fd4f178';
 @ProviderFor(firestoreService)
 const firestoreServiceProvider = FirestoreServiceProvider._();
 
-final class FirestoreServiceProvider
-    extends
-        $FunctionalProvider<
-          FirestoreService,
-          FirestoreService,
-          FirestoreService
-        >
-    with $Provider<FirestoreService> {
+final class FirestoreServiceProvider extends $FunctionalProvider<
+    FirestoreService,
+    FirestoreService,
+    FirestoreService> with $Provider<FirestoreService> {
   const FirestoreServiceProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'firestoreServiceProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'firestoreServiceProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$firestoreServiceHash();
@@ -103,15 +99,15 @@ final class AuthStateChangesProvider
     extends $FunctionalProvider<AsyncValue<dynamic>, dynamic, Stream<dynamic>>
     with $FutureModifier<dynamic>, $StreamProvider<dynamic> {
   const AuthStateChangesProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'authStateChangesProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'authStateChangesProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$authStateChangesHash();
@@ -136,15 +132,15 @@ final class CurrentUserProvider
     extends $FunctionalProvider<AsyncValue<dynamic>, dynamic, Stream<dynamic>>
     with $FutureModifier<dynamic>, $StreamProvider<dynamic> {
   const CurrentUserProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'currentUserProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'currentUserProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$currentUserHash();
@@ -168,15 +164,15 @@ const authActionsProvider = AuthActionsProvider._();
 final class AuthActionsProvider
     extends $AsyncNotifierProvider<AuthActions, dynamic> {
   const AuthActionsProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'authActionsProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'authActionsProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$authActionsHash();
@@ -195,14 +191,11 @@ abstract class _$AuthActions extends $AsyncNotifier<dynamic> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<AsyncValue<dynamic>, dynamic>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<dynamic>, dynamic>,
-              AsyncValue<dynamic>,
-              Object?,
-              Object?
-            >;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<AsyncValue<dynamic>, dynamic>,
+        AsyncValue<dynamic>,
+        Object?,
+        Object?>;
     element.handleValue(ref, created);
   }
 }

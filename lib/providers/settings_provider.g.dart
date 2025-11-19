@@ -16,15 +16,15 @@ final class StorageServiceProvider
     extends $FunctionalProvider<StorageService, StorageService, StorageService>
     with $Provider<StorageService> {
   const StorageServiceProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'storageServiceProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'storageServiceProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$storageServiceHash();
@@ -56,15 +56,15 @@ const themeModeProvider = ThemeModeNotifierProvider._();
 final class ThemeModeNotifierProvider
     extends $NotifierProvider<ThemeModeNotifier, ThemeMode> {
   const ThemeModeNotifierProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'themeModeProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'themeModeProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$themeModeNotifierHash();
@@ -91,14 +91,8 @@ abstract class _$ThemeModeNotifier extends $Notifier<ThemeMode> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<ThemeMode, ThemeMode>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<ThemeMode, ThemeMode>,
-              ThemeMode,
-              Object?,
-              Object?
-            >;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<ThemeMode, ThemeMode>, ThemeMode, Object?, Object?>;
     element.handleValue(ref, created);
   }
 }
@@ -109,15 +103,15 @@ const notificationSettingsProvider = NotificationSettingsProvider._();
 final class NotificationSettingsProvider
     extends $NotifierProvider<NotificationSettings, bool> {
   const NotificationSettingsProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'notificationSettingsProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'notificationSettingsProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$notificationSettingsHash();
@@ -145,14 +139,8 @@ abstract class _$NotificationSettings extends $Notifier<bool> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<bool, bool>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<bool, bool>,
-              bool,
-              Object?,
-              Object?
-            >;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<bool, bool>, bool, Object?, Object?>;
     element.handleValue(ref, created);
   }
 }
@@ -163,15 +151,15 @@ const settingsActionsProvider = SettingsActionsProvider._();
 final class SettingsActionsProvider
     extends $AsyncNotifierProvider<SettingsActions, dynamic> {
   const SettingsActionsProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'settingsActionsProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+      : super(
+          from: null,
+          argument: null,
+          retry: null,
+          name: r'settingsActionsProvider',
+          isAutoDispose: true,
+          dependencies: null,
+          $allTransitiveDependencies: null,
+        );
 
   @override
   String debugGetCreateSourceHash() => _$settingsActionsHash();
@@ -190,14 +178,11 @@ abstract class _$SettingsActions extends $AsyncNotifier<dynamic> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<AsyncValue<dynamic>, dynamic>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<dynamic>, dynamic>,
-              AsyncValue<dynamic>,
-              Object?,
-              Object?
-            >;
+    final element = ref.element as $ClassProviderElement<
+        AnyNotifier<AsyncValue<dynamic>, dynamic>,
+        AsyncValue<dynamic>,
+        Object?,
+        Object?>;
     element.handleValue(ref, created);
   }
 }

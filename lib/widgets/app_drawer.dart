@@ -225,9 +225,7 @@ class AppDrawer extends ConsumerWidget {
           return const SizedBox.shrink();
         }
 
-        return ref
-            .watch(userConversationsProvider(user.uid))
-            .when(
+        return ref.watch(userConversationsProvider(user.uid)).when(
               data: (conversations) {
                 if (conversations.isEmpty) {
                   return Padding(
@@ -236,20 +234,18 @@ class AppDrawer extends ConsumerWidget {
                       child: Text(
                         'No conversations yet',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSurface.withAlpha(153),
-                        ),
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withAlpha(153),
+                            ),
                       ),
                     ),
                   );
                 }
 
                 // Get the 5 most recent conversations
-                final recentConversations = conversations
-                    .cast<Conversation>()
-                    .take(5)
-                    .toList();
+                final recentConversations =
+                    conversations.cast<Conversation>().take(5).toList();
 
                 return Column(
                   children: recentConversations.map((conversation) {
@@ -279,8 +275,8 @@ class AppDrawer extends ConsumerWidget {
                   child: Text(
                     'Error loading chats',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.error,
-                    ),
+                          color: Theme.of(context).colorScheme.error,
+                        ),
                   ),
                 ),
               ),

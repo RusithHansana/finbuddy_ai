@@ -53,9 +53,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     }
 
     try {
-      await ref
-          .read(authActionsProvider.notifier)
-          .signUpWithEmail(
+      await ref.read(authActionsProvider.notifier).signUpWithEmail(
             email: _emailController.text.trim(),
             password: _passwordController.text,
             displayName: _nameController.text.trim(),
@@ -298,9 +296,8 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       style: theme.textTheme.bodyMedium,
                     ),
                     TextButton(
-                      onPressed: isLoading
-                          ? null
-                          : () => context.go('/sign-in'),
+                      onPressed:
+                          isLoading ? null : () => context.go('/sign-in'),
                       child: const Text('Sign In'),
                     ),
                   ],

@@ -129,9 +129,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
             data: (user) {
               if (user == null) return const SizedBox.shrink();
 
-              return ref
-                  .watch(userConversationsProvider(user.uid))
-                  .when(
+              return ref.watch(userConversationsProvider(user.uid)).when(
                     data: (conversations) {
                       if (conversations.isEmpty) return const SizedBox.shrink();
 
@@ -205,9 +203,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
       return _buildSearchResults(userId);
     }
 
-    return ref
-        .watch(userConversationsProvider(userId))
-        .when(
+    return ref.watch(userConversationsProvider(userId)).when(
           data: (conversations) {
             if (conversations.isEmpty) {
               return const EmptyState(
@@ -233,9 +229,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   }
 
   Widget _buildSearchResults(String userId) {
-    return ref
-        .watch(filteredConversationsProvider(userId))
-        .when(
+    return ref.watch(filteredConversationsProvider(userId)).when(
           data: (conversations) {
             if (conversations.isEmpty) {
               return const EmptyState(
