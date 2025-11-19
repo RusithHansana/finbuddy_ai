@@ -22,17 +22,16 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.24.0" # Unified version with build jobs
+          flutter-version: "3.38.2"
           cache: true
 
-      # FIXED: Decoded the secret before writing
       - name: Create Firebase config files
         env:
           FIREBASE_OPTIONS: ${{ secrets.FIREBASE_OPTIONS_DART }}
         run: |
           echo "$FIREBASE_OPTIONS" | base64 -d > lib/firebase_options.dart
+          dart format lib/firebase_options.dart
 
-      # FIXED: Run pub get BEFORE analysis/formatting
       - name: Get dependencies
         run: flutter pub get
 
@@ -70,7 +69,6 @@ jobs:
           channel: "stable"
           cache: true
 
-      # FIXED: Decoded both secrets
       - name: Create Firebase config files
         env:
           FIREBASE_OPTIONS: ${{ secrets.FIREBASE_OPTIONS_DART }}
@@ -119,13 +117,12 @@ jobs:
           channel: "stable"
           cache: true
 
-      # FIXED: Decoded both secrets
       - name: Create Firebase config files
         env:
           FIREBASE_OPTIONS: ${{ secrets.FIREBASE_OPTIONS_DART }}
           GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}
         run: |
-          echo "$FIREBASE_OPTIONS" | base64 -d > lib/firebase_options.dart
+          echo "$FIREBASE_OPTIONS" | base64 -d> lib/firebase_options.dart
           echo "$GOOGLE_SERVICE_INFO_PLIST" | base64 -d > ios/Runner/GoogleService-Info.plist
 
       - name: Get dependencies
