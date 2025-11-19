@@ -61,20 +61,23 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: Routes.welcome,
         name: 'welcome',
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const WelcomeScreen()),
+        pageBuilder:
+            (context, state) =>
+                MaterialPage(key: state.pageKey, child: const WelcomeScreen()),
       ),
       GoRoute(
         path: Routes.signIn,
         name: 'signIn',
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const SignInScreen()),
+        pageBuilder:
+            (context, state) =>
+                MaterialPage(key: state.pageKey, child: const SignInScreen()),
       ),
       GoRoute(
         path: Routes.signUp,
         name: 'signUp',
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const SignUpScreen()),
+        pageBuilder:
+            (context, state) =>
+                MaterialPage(key: state.pageKey, child: const SignUpScreen()),
       ),
 
       // ========== PROTECTED ROUTES ==========
@@ -92,14 +95,16 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: Routes.history,
         name: 'history',
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const HistoryScreen()),
+        pageBuilder:
+            (context, state) =>
+                MaterialPage(key: state.pageKey, child: const HistoryScreen()),
       ),
       GoRoute(
         path: Routes.settings,
         name: 'settings',
-        pageBuilder: (context, state) =>
-            MaterialPage(key: state.pageKey, child: const SettingsScreen()),
+        pageBuilder:
+            (context, state) =>
+                MaterialPage(key: state.pageKey, child: const SettingsScreen()),
       ),
     ],
   );

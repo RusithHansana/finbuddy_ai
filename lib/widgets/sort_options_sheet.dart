@@ -63,9 +63,10 @@ class SortOptionsSheet extends StatelessWidget {
                   color: isSelected ? theme.colorScheme.primary : null,
                 ),
               ),
-              trailing: isSelected
-                  ? Icon(Icons.check, color: theme.colorScheme.primary)
-                  : null,
+              trailing:
+                  isSelected
+                      ? Icon(Icons.check, color: theme.colorScheme.primary)
+                      : null,
               onTap: () {
                 onSortChanged(option);
                 Navigator.pop(context);
@@ -90,10 +91,11 @@ class SortOptionsSheet extends StatelessWidget {
           top: Radius.circular(AppTheme.spaceMd),
         ),
       ),
-      builder: (context) => SortOptionsSheet(
-        currentSort: currentSort,
-        onSortChanged: onSortChanged,
-      ),
+      builder:
+          (context) => SortOptionsSheet(
+            currentSort: currentSort,
+            onSortChanged: onSortChanged,
+          ),
     );
   }
 }

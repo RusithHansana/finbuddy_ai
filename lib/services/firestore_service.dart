@@ -21,10 +21,9 @@ class FirestoreService {
   CollectionReference _messagesCollection(
     String userId,
     String conversationId,
-  ) =>
-      _conversationsCollection(
-        userId,
-      ).doc(conversationId).collection(AppConstants.messagesCollection);
+  ) => _conversationsCollection(
+    userId,
+  ).doc(conversationId).collection(AppConstants.messagesCollection);
 
   // ============== USER OPERATIONS ==============
 
@@ -84,9 +83,10 @@ class FirestoreService {
       final conversation = Conversation(
         id: '', // Will be set by Firestore
         userId: userId,
-        title: firstMessage.length > 50
-            ? '${firstMessage.substring(0, 50)}...'
-            : firstMessage,
+        title:
+            firstMessage.length > 50
+                ? '${firstMessage.substring(0, 50)}...'
+                : firstMessage,
         createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
         messageCount: 0,
@@ -107,9 +107,10 @@ class FirestoreService {
   /// Get all conversations for a user
   Future<List> getConversations(String userId) async {
     try {
-      final snapshot = await _conversationsCollection(
-        userId,
-      ).orderBy('updatedAt', descending: true).get();
+      final snapshot =
+          await _conversationsCollection(
+            userId,
+          ).orderBy('updatedAt', descending: true).get();
 
       return snapshot.docs
           .map(
@@ -129,13 +130,14 @@ class FirestoreService {
         .orderBy('updatedAt', descending: true)
         .snapshots()
         .map(
-          (snapshot) => snapshot.docs
-              .map(
-                (doc) => Conversation.fromFirestore(
-                  doc as DocumentSnapshot<Map<String, dynamic>>,
-                ),
-              )
-              .toList(),
+          (snapshot) =>
+              snapshot.docs
+                  .map(
+                    (doc) => Conversation.fromFirestore(
+                      doc as DocumentSnapshot<Map<String, dynamic>>,
+                    ),
+                  )
+                  .toList(),
         );
   }
 
@@ -162,10 +164,8 @@ class FirestoreService {
   Future deleteConversation(String userId, String conversationId) async {
     try {
       // Delete all messages in the conversation
-      final messagesSnapshot = await _messagesCollection(
-        userId,
-        conversationId,
-      ).get();
+      final messagesSnapshot =
+          await _messagesCollection(userId, conversationId).get();
       for (var doc in messagesSnapshot.docs) {
         await doc.reference.delete();
       }
@@ -207,10 +207,11 @@ class FirestoreService {
     int limit = 50,
   }) async {
     try {
-      final snapshot = await _messagesCollection(
-        userId,
-        conversationId,
-      ).orderBy('timestamp', descending: false).limit(limit).get();
+      final snapshot =
+          await _messagesCollection(
+            userId,
+            conversationId,
+          ).orderBy('timestamp', descending: false).limit(limit).get();
 
       return snapshot.docs
           .map(
@@ -230,13 +231,14 @@ class FirestoreService {
         .orderBy('timestamp', descending: false)
         .snapshots()
         .map(
-          (snapshot) => snapshot.docs
-              .map(
-                (doc) => Message.fromFirestore(
-                  doc as DocumentSnapshot<Map<String, dynamic>>,
-                ),
-              )
-              .toList(),
+          (snapshot) =>
+              snapshot.docs
+                  .map(
+                    (doc) => Message.fromFirestore(
+                      doc as DocumentSnapshot<Map<String, dynamic>>,
+                    ),
+                  )
+                  .toList(),
         );
   }
 
@@ -261,13 +263,13 @@ class FirestoreService {
       // Client-side filtering (Firestore doesn't support full-text search)
       return allConversations.where((conversation) {
         final titleMatch = conversation.title.toLowerCase().contains(
-              query.toLowerCase(),
-            );
+          query.toLowerCase(),
+        );
         final messageMatch =
             conversation.lastMessageText?.toLowerCase().contains(
-                      query.toLowerCase(),
-                    ) ??
-                false;
+              query.toLowerCase(),
+            ) ??
+            false;
         return titleMatch || messageMatch;
       }).toList();
     } catch (e) {

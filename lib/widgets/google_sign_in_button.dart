@@ -24,39 +24,40 @@ class GoogleSignInButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppTheme.radiusMd),
           ),
         ),
-        child: isLoading
-            ? const SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset(
-                    'assets/images/google_logo.png',
-                    height: 24,
-                    errorBuilder: (context, error, stackTrace) {
-                      // Fallback to icon if image not found
-                      return const Icon(
-                        Icons.g_mobiledata,
-                        size: 24,
-                        color: Colors.red,
-                      );
-                    },
-                  ),
-                  const SizedBox(width: AppTheme.spaceMd),
-                  Text(
-                    AppStrings.continueWithGoogle,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: theme.colorScheme.onSurface,
+        child:
+            isLoading
+                ? const SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+                : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      'assets/images/google_logo.png',
+                      height: 24,
+                      errorBuilder: (context, error, stackTrace) {
+                        // Fallback to icon if image not found
+                        return const Icon(
+                          Icons.g_mobiledata,
+                          size: 24,
+                          color: Colors.red,
+                        );
+                      },
                     ),
-                  ),
-                ],
-              ),
+                    const SizedBox(width: AppTheme.spaceMd),
+                    Text(
+                      AppStrings.continueWithGoogle,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: theme.colorScheme.onSurface,
+                      ),
+                    ),
+                  ],
+                ),
       ),
     );
   }

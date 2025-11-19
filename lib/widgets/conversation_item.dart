@@ -26,20 +26,21 @@ class ConversationItem extends StatelessWidget {
       confirmDismiss: (_) async {
         return await showDialog<bool>(
           context: context,
-          builder: (context) => AlertDialog(
-            title: const Text(AppStrings.deleteConversationTitle),
-            content: const Text(AppStrings.deleteConversationMessage),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, false),
-                child: const Text(AppStrings.cancel),
+          builder:
+              (context) => AlertDialog(
+                title: const Text(AppStrings.deleteConversationTitle),
+                content: const Text(AppStrings.deleteConversationMessage),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, false),
+                    child: const Text(AppStrings.cancel),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, true),
+                    child: const Text(AppStrings.delete),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: const Text(AppStrings.delete),
-              ),
-            ],
-          ),
         );
       },
       onDismissed: (_) => onDelete?.call(),
@@ -53,14 +54,16 @@ class ConversationItem extends StatelessWidget {
         selected: isSelected,
         onTap: onTap,
         leading: CircleAvatar(
-          backgroundColor: isSelected
-              ? theme.colorScheme.primaryContainer
-              : theme.colorScheme.surfaceContainerHighest,
+          backgroundColor:
+              isSelected
+                  ? theme.colorScheme.primaryContainer
+                  : theme.colorScheme.surfaceContainerHighest,
           child: Icon(
             Icons.chat_bubble_outline,
-            color: isSelected
-                ? theme.colorScheme.onPrimaryContainer
-                : theme.colorScheme.onSurface,
+            color:
+                isSelected
+                    ? theme.colorScheme.onPrimaryContainer
+                    : theme.colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -72,13 +75,14 @@ class ConversationItem extends StatelessWidget {
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
           ),
         ),
-        subtitle: conversation.lastMessageText != null
-            ? Text(
-                conversation.lastMessageText!,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              )
-            : null,
+        subtitle:
+            conversation.lastMessageText != null
+                ? Text(
+                  conversation.lastMessageText!,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                )
+                : null,
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,

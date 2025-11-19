@@ -16,15 +16,15 @@ final class AiServiceProvider
     extends $FunctionalProvider<AIService, AIService, AIService>
     with $Provider<AIService> {
   const AiServiceProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'aiServiceProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'aiServiceProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$aiServiceHash();
@@ -56,15 +56,15 @@ const currentConversationIdProvider = CurrentConversationIdProvider._();
 final class CurrentConversationIdProvider
     extends $NotifierProvider<CurrentConversationId, String?> {
   const CurrentConversationIdProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'currentConversationIdProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'currentConversationIdProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$currentConversationIdHash();
@@ -92,8 +92,14 @@ abstract class _$CurrentConversationId extends $Notifier<String?> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<String?, String?>;
-    final element = ref.element as $ClassProviderElement<
-        AnyNotifier<String?, String?>, String?, Object?, Object?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String?, String?>,
+              String?,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, created);
   }
 }
@@ -101,19 +107,24 @@ abstract class _$CurrentConversationId extends $Notifier<String?> {
 @ProviderFor(conversationMessages)
 const conversationMessagesProvider = ConversationMessagesFamily._();
 
-final class ConversationMessagesProvider extends $FunctionalProvider<
-        AsyncValue<List<dynamic>>, List<dynamic>, Stream<List<dynamic>>>
+final class ConversationMessagesProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<dynamic>>,
+          List<dynamic>,
+          Stream<List<dynamic>>
+        >
     with $FutureModifier<List<dynamic>>, $StreamProvider<List<dynamic>> {
   const ConversationMessagesProvider._({
     required ConversationMessagesFamily super.from,
     required (String, String) super.argument,
   }) : super(
-          retry: null,
-          name: r'conversationMessagesProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+         retry: null,
+         name: r'conversationMessagesProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$conversationMessagesHash();
@@ -129,8 +140,7 @@ final class ConversationMessagesProvider extends $FunctionalProvider<
   @override
   $StreamProviderElement<List<dynamic>> $createElement(
     $ProviderPointer pointer,
-  ) =>
-      $StreamProviderElement(pointer);
+  ) => $StreamProviderElement(pointer);
 
   @override
   Stream<List<dynamic>> create(Ref ref) {
@@ -155,13 +165,13 @@ String _$conversationMessagesHash() =>
 final class ConversationMessagesFamily extends $Family
     with $FunctionalFamilyOverride<Stream<List<dynamic>>, (String, String)> {
   const ConversationMessagesFamily._()
-      : super(
-          retry: null,
-          name: r'conversationMessagesProvider',
-          dependencies: null,
-          $allTransitiveDependencies: null,
-          isAutoDispose: true,
-        );
+    : super(
+        retry: null,
+        name: r'conversationMessagesProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
   ConversationMessagesProvider call(String userId, String conversationId) =>
       ConversationMessagesProvider._(
@@ -179,15 +189,15 @@ const chatActionsProvider = ChatActionsProvider._();
 final class ChatActionsProvider
     extends $AsyncNotifierProvider<ChatActions, dynamic> {
   const ChatActionsProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'chatActionsProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'chatActionsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$chatActionsHash();
@@ -206,11 +216,14 @@ abstract class _$ChatActions extends $AsyncNotifier<dynamic> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<AsyncValue<dynamic>, dynamic>;
-    final element = ref.element as $ClassProviderElement<
-        AnyNotifier<AsyncValue<dynamic>, dynamic>,
-        AsyncValue<dynamic>,
-        Object?,
-        Object?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<dynamic>, dynamic>,
+              AsyncValue<dynamic>,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, created);
   }
 }

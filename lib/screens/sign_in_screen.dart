@@ -40,7 +40,9 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     }
 
     try {
-      await ref.read(authActionsProvider.notifier).signInWithEmail(
+      await ref
+          .read(authActionsProvider.notifier)
+          .signInWithEmail(
             email: _emailController.text.trim(),
             password: _passwordController.text,
           );
@@ -159,15 +161,16 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: isLoading
-                        ? null
-                        : () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Forgot password coming soon!'),
-                              ),
-                            );
-                          },
+                    onPressed:
+                        isLoading
+                            ? null
+                            : () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Forgot password coming soon!'),
+                                ),
+                              );
+                            },
                     child: const Text('Forgot Password?'),
                   ),
                 ),

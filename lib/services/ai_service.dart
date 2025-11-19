@@ -41,11 +41,13 @@ class AIService {
     final systemInstruction = _buildSystemInstruction(user);
 
     // 2. Map the chat history (if any) to the Content format
-    final chatHistory = history?.map((message) {
-      return Content(message.sender == MessageSender.user ? 'user' : 'model', [
-        TextPart(message.text),
-      ]);
-    }).toList();
+    final chatHistory =
+        history?.map((message) {
+          return Content(
+            message.sender == MessageSender.user ? 'user' : 'model',
+            [TextPart(message.text)],
+          );
+        }).toList();
 
     // 3. Create a NEW model instance specifically for this chat session.
     final sessionModel = FirebaseAI.googleAI().generativeModel(

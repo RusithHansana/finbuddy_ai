@@ -63,25 +63,26 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   ) async {
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete All Conversations'),
-        content: Text(
-          'Are you sure you want to delete all ${conversations.length} conversations? This action cannot be undone.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.error,
+      builder:
+          (context) => AlertDialog(
+            title: const Text('Delete All Conversations'),
+            content: Text(
+              'Are you sure you want to delete all ${conversations.length} conversations? This action cannot be undone.',
             ),
-            child: const Text('Delete All'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context, true),
+                style: TextButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.error,
+                ),
+                child: const Text('Delete All'),
+              ),
+            ],
           ),
-        ],
-      ),
     );
 
     if (confirmed == true && mounted) {
@@ -105,19 +106,21 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: _isSearching
-            ? SearchBarWidget(
-                controller: _searchController,
-                onChanged: _onSearchChanged,
-                hintText: 'Search conversations...',
-              )
-            : const Text('Chat History'),
-        leading: _isSearching
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: _stopSearch,
-              )
-            : null,
+        title:
+            _isSearching
+                ? SearchBarWidget(
+                  controller: _searchController,
+                  onChanged: _onSearchChanged,
+                  hintText: 'Search conversations...',
+                )
+                : const Text('Chat History'),
+        leading:
+            _isSearching
+                ? IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: _stopSearch,
+                )
+                : null,
         actions: [
           if (!_isSearching)
             IconButton(
@@ -129,7 +132,9 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
             data: (user) {
               if (user == null) return const SizedBox.shrink();
 
-              return ref.watch(userConversationsProvider(user.uid)).when(
+              return ref
+                  .watch(userConversationsProvider(user.uid))
+                  .when(
                     data: (conversations) {
                       if (conversations.isEmpty) return const SizedBox.shrink();
 
@@ -143,18 +148,19 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                             );
                           }
                         },
-                        itemBuilder: (context) => [
-                          const PopupMenuItem(
-                            value: 'delete_all',
-                            child: Row(
-                              children: [
-                                Icon(Icons.delete_sweep, size: 20),
-                                SizedBox(width: 12),
-                                Text('Delete All'),
-                              ],
-                            ),
-                          ),
-                        ],
+                        itemBuilder:
+                            (context) => [
+                              const PopupMenuItem(
+                                value: 'delete_all',
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.delete_sweep, size: 20),
+                                    SizedBox(width: 12),
+                                    Text('Delete All'),
+                                  ],
+                                ),
+                              ),
+                            ],
                       );
                     },
                     loading: () => const SizedBox.shrink(),
@@ -180,17 +186,22 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
           return _buildConversationsList(user.uid);
         },
         loading: () => const LoadingIndicator(message: 'Loading...'),
-        error: (error, _) =>
-            ErrorView(message: error.toString(), title: 'Error Loading User'),
+        error:
+            (error, _) => ErrorView(
+              message: error.toString(),
+              title: 'Error Loading User',
+            ),
       ),
       floatingActionButton: userAsync.maybeWhen(
-        data: (user) => user != null
-            ? FloatingActionButton.extended(
-                onPressed: () => context.goToChat(),
-                icon: const Icon(Icons.add),
-                label: const Text('New Chat'),
-              )
-            : null,
+        data:
+            (user) =>
+                user != null
+                    ? FloatingActionButton.extended(
+                      onPressed: () => context.goToChat(),
+                      icon: const Icon(Icons.add),
+                      label: const Text('New Chat'),
+                    )
+                    : null,
         orElse: () => null,
       ),
     );
@@ -203,7 +214,9 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
       return _buildSearchResults(userId);
     }
 
-    return ref.watch(userConversationsProvider(userId)).when(
+    return ref
+        .watch(userConversationsProvider(userId))
+        .when(
           data: (conversations) {
             if (conversations.isEmpty) {
               return const EmptyState(
@@ -218,18 +231,22 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
               conversations.cast<Conversation>(),
             );
           },
-          loading: () =>
-              const LoadingIndicator(message: 'Loading conversations...'),
-          error: (error, stackTrace) => ErrorView(
-            title: 'Error Loading Conversations',
-            message: error.toString(),
-            onRetry: () => ref.invalidate(userConversationsProvider(userId)),
-          ),
+          loading:
+              () => const LoadingIndicator(message: 'Loading conversations...'),
+          error:
+              (error, stackTrace) => ErrorView(
+                title: 'Error Loading Conversations',
+                message: error.toString(),
+                onRetry:
+                    () => ref.invalidate(userConversationsProvider(userId)),
+              ),
         );
   }
 
   Widget _buildSearchResults(String userId) {
-    return ref.watch(filteredConversationsProvider(userId)).when(
+    return ref
+        .watch(filteredConversationsProvider(userId))
+        .when(
           data: (conversations) {
             if (conversations.isEmpty) {
               return const EmptyState(
@@ -245,12 +262,13 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
             );
           },
           loading: () => const LoadingIndicator(message: 'Searching...'),
-          error: (error, stackTrace) => ErrorView(
-            title: 'Search Error',
-            message: error.toString(),
-            onRetry: () =>
-                ref.invalidate(filteredConversationsProvider(userId)),
-          ),
+          error:
+              (error, stackTrace) => ErrorView(
+                title: 'Search Error',
+                message: error.toString(),
+                onRetry:
+                    () => ref.invalidate(filteredConversationsProvider(userId)),
+              ),
         );
   }
 
@@ -276,8 +294,8 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                 final conversation = conversations[index];
                 return ConversationItem(
                   conversation: conversation,
-                  onTap: () =>
-                      context.goToChat(conversationId: conversation.id),
+                  onTap:
+                      () => context.goToChat(conversationId: conversation.id),
                   onDelete: () => _deleteConversation(userId, conversation.id),
                 );
               },

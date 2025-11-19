@@ -27,9 +27,10 @@ class MessageBubble extends StatelessWidget {
           maxWidth: MediaQuery.of(context).size.width * 0.75,
         ),
         decoration: BoxDecoration(
-          color: isUser
-              ? theme.colorScheme.primary
-              : theme.colorScheme.surfaceContainerHighest,
+          color:
+              isUser
+                  ? theme.colorScheme.primary
+                  : theme.colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(AppTheme.spaceMd).copyWith(
             bottomRight: isUser ? const Radius.circular(4) : null,
             bottomLeft: !isUser ? const Radius.circular(4) : null,
@@ -41,9 +42,10 @@ class MessageBubble extends StatelessWidget {
             Text(
               message.text,
               style: TextStyle(
-                color: isUser
-                    ? theme.colorScheme.onPrimary
-                    : theme.colorScheme.onSurface,
+                color:
+                    isUser
+                        ? theme.colorScheme.onPrimary
+                        : theme.colorScheme.onSurface,
                 fontSize: 15,
               ),
             ),
@@ -51,9 +53,10 @@ class MessageBubble extends StatelessWidget {
             Text(
               _formatTime(message.timestamp),
               style: TextStyle(
-                color: isUser
-                    ? theme.colorScheme.onPrimary.withValues(alpha: 0.7)
-                    : theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                color:
+                    isUser
+                        ? theme.colorScheme.onPrimary.withValues(alpha: 0.7)
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.6),
                 fontSize: 11,
               ),
             ),

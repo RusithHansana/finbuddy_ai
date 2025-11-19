@@ -97,9 +97,10 @@ class ChatActions extends _$ChatActions {
       // Initialize AI session with context
       aiService.startNewSession(
         user: user,
-        history: messages
-            .take(messages.length - 1)
-            .toList(), // Exclude current message
+        history:
+            messages
+                .take(messages.length - 1)
+                .toList(), // Exclude current message
       );
 
       // Get AI response

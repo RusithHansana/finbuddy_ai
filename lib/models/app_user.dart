@@ -38,7 +38,7 @@ sealed class AppUser with _$AppUser {
       incomeFrequency: data['incomeFrequency'] as String?,
       financialGoals:
           (data['financialGoals'] as List?)?.map((e) => e as String).toList() ??
-              [],
+          [],
       context: (data['context'] as Map<String, dynamic>?) ?? {},
       notificationsEnabled: data['notificationsEnabled'] as bool? ?? true,
       createdAt: (data['createdAt'] as Timestamp?)?.toDate(),
@@ -57,12 +57,14 @@ sealed class AppUser with _$AppUser {
       'financialGoals': user.financialGoals,
       'context': user.context,
       'notificationsEnabled': user.notificationsEnabled,
-      'createdAt': user.createdAt != null
-          ? Timestamp.fromDate(user.createdAt!)
-          : FieldValue.serverTimestamp(),
-      'lastLoginAt': user.lastLoginAt != null
-          ? Timestamp.fromDate(user.lastLoginAt!)
-          : FieldValue.serverTimestamp(),
+      'createdAt':
+          user.createdAt != null
+              ? Timestamp.fromDate(user.createdAt!)
+              : FieldValue.serverTimestamp(),
+      'lastLoginAt':
+          user.lastLoginAt != null
+              ? Timestamp.fromDate(user.lastLoginAt!)
+              : FieldValue.serverTimestamp(),
     };
   }
 }

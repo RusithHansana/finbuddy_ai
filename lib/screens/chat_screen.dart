@@ -119,8 +119,9 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
           );
         },
         loading: () => const LoadingIndicator(),
-        error: (error, stack) =>
-            ErrorView(message: 'Error loading user: ${error.toString()}'),
+        error:
+            (error, stack) =>
+                ErrorView(message: 'Error loading user: ${error.toString()}'),
       ),
     );
   }
@@ -157,10 +158,10 @@ class _ChatContent extends ConsumerWidget {
                   child: Text(
                     'Start chatting with FinBuddy!',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSurface.withValues(alpha: 0.6),
-                        ),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.6),
+                    ),
                   ),
                 );
               }
@@ -192,9 +193,10 @@ class _ChatContent extends ConsumerWidget {
               );
             },
             loading: () => const LoadingIndicator(),
-            error: (error, stack) => ErrorView(
-              message: 'Error loading messages: ${error.toString()}',
-            ),
+            error:
+                (error, stack) => ErrorView(
+                  message: 'Error loading messages: ${error.toString()}',
+                ),
           ),
         ),
         ChatInput(onSendMessage: onSendMessage, isLoading: isAiTyping),

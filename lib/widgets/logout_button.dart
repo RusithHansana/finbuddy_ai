@@ -25,20 +25,21 @@ class LogoutButton extends ConsumerWidget {
     void handleLogout() async {
       final shouldLogout = await showDialog<bool>(
         context: context,
-        builder: (context) => AlertDialog(
-          title: const Text(AppStrings.logoutTitle),
-          content: const Text(AppStrings.logoutMessage),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text(AppStrings.cancel),
+        builder:
+            (context) => AlertDialog(
+              title: const Text(AppStrings.logoutTitle),
+              content: const Text(AppStrings.logoutMessage),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text(AppStrings.cancel),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text('Logout'),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: const Text('Logout'),
-            ),
-          ],
-        ),
       );
 
       if (shouldLogout == true && context.mounted) {

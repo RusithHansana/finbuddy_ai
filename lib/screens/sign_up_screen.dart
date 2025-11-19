@@ -53,7 +53,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     }
 
     try {
-      await ref.read(authActionsProvider.notifier).signUpWithEmail(
+      await ref
+          .read(authActionsProvider.notifier)
+          .signUpWithEmail(
             email: _emailController.text.trim(),
             password: _passwordController.text,
             displayName: _nameController.text.trim(),
@@ -195,10 +197,11 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   label: 'Confirm Password',
                   hint: 'Re-enter your password',
                   isPassword: true,
-                  validator: (value) => Validators.validateConfirmPassword(
-                    value,
-                    _passwordController.text,
-                  ),
+                  validator:
+                      (value) => Validators.validateConfirmPassword(
+                        value,
+                        _passwordController.text,
+                      ),
                   enabled: !isLoading,
                   prefixIcon: const Icon(Icons.lock_outlined),
                 ),
@@ -208,23 +211,25 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   children: [
                     Checkbox(
                       value: _agreedToTerms,
-                      onChanged: isLoading
-                          ? null
-                          : (value) {
-                              setState(() {
-                                _agreedToTerms = value ?? false;
-                              });
-                            },
+                      onChanged:
+                          isLoading
+                              ? null
+                              : (value) {
+                                setState(() {
+                                  _agreedToTerms = value ?? false;
+                                });
+                              },
                     ),
                     Expanded(
                       child: GestureDetector(
-                        onTap: isLoading
-                            ? null
-                            : () {
-                                setState(() {
-                                  _agreedToTerms = !_agreedToTerms;
-                                });
-                              },
+                        onTap:
+                            isLoading
+                                ? null
+                                : () {
+                                  setState(() {
+                                    _agreedToTerms = !_agreedToTerms;
+                                  });
+                                },
                         child: Text.rich(
                           TextSpan(
                             text: 'I agree to the ',

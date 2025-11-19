@@ -12,19 +12,24 @@ part of 'history_provider.dart';
 @ProviderFor(userConversations)
 const userConversationsProvider = UserConversationsFamily._();
 
-final class UserConversationsProvider extends $FunctionalProvider<
-        AsyncValue<List<dynamic>>, List<dynamic>, Stream<List<dynamic>>>
+final class UserConversationsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<dynamic>>,
+          List<dynamic>,
+          Stream<List<dynamic>>
+        >
     with $FutureModifier<List<dynamic>>, $StreamProvider<List<dynamic>> {
   const UserConversationsProvider._({
     required UserConversationsFamily super.from,
     required String super.argument,
   }) : super(
-          retry: null,
-          name: r'userConversationsProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+         retry: null,
+         name: r'userConversationsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$userConversationsHash();
@@ -40,8 +45,7 @@ final class UserConversationsProvider extends $FunctionalProvider<
   @override
   $StreamProviderElement<List<dynamic>> $createElement(
     $ProviderPointer pointer,
-  ) =>
-      $StreamProviderElement(pointer);
+  ) => $StreamProviderElement(pointer);
 
   @override
   Stream<List<dynamic>> create(Ref ref) {
@@ -65,13 +69,13 @@ String _$userConversationsHash() => r'b05fd99578c790366cd4880459a8ca2157633e42';
 final class UserConversationsFamily extends $Family
     with $FunctionalFamilyOverride<Stream<List<dynamic>>, String> {
   const UserConversationsFamily._()
-      : super(
-          retry: null,
-          name: r'userConversationsProvider',
-          dependencies: null,
-          $allTransitiveDependencies: null,
-          isAutoDispose: true,
-        );
+    : super(
+        retry: null,
+        name: r'userConversationsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
   UserConversationsProvider call(String userId) =>
       UserConversationsProvider._(argument: userId, from: this);
@@ -85,15 +89,15 @@ const searchQueryProvider = SearchQueryProvider._();
 
 final class SearchQueryProvider extends $NotifierProvider<SearchQuery, String> {
   const SearchQueryProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'searchQueryProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'searchQueryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$searchQueryHash();
@@ -120,8 +124,14 @@ abstract class _$SearchQuery extends $Notifier<String> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<String, String>;
-    final element = ref.element as $ClassProviderElement<
-        AnyNotifier<String, String>, String, Object?, Object?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String, String>,
+              String,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, created);
   }
 }
@@ -129,19 +139,24 @@ abstract class _$SearchQuery extends $Notifier<String> {
 @ProviderFor(filteredConversations)
 const filteredConversationsProvider = FilteredConversationsFamily._();
 
-final class FilteredConversationsProvider extends $FunctionalProvider<
-        AsyncValue<List<dynamic>>, List<dynamic>, FutureOr<List<dynamic>>>
+final class FilteredConversationsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<dynamic>>,
+          List<dynamic>,
+          FutureOr<List<dynamic>>
+        >
     with $FutureModifier<List<dynamic>>, $FutureProvider<List<dynamic>> {
   const FilteredConversationsProvider._({
     required FilteredConversationsFamily super.from,
     required String super.argument,
   }) : super(
-          retry: null,
-          name: r'filteredConversationsProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+         retry: null,
+         name: r'filteredConversationsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$filteredConversationsHash();
@@ -157,8 +172,7 @@ final class FilteredConversationsProvider extends $FunctionalProvider<
   @override
   $FutureProviderElement<List<dynamic>> $createElement(
     $ProviderPointer pointer,
-  ) =>
-      $FutureProviderElement(pointer);
+  ) => $FutureProviderElement(pointer);
 
   @override
   FutureOr<List<dynamic>> create(Ref ref) {
@@ -183,13 +197,13 @@ String _$filteredConversationsHash() =>
 final class FilteredConversationsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<dynamic>>, String> {
   const FilteredConversationsFamily._()
-      : super(
-          retry: null,
-          name: r'filteredConversationsProvider',
-          dependencies: null,
-          $allTransitiveDependencies: null,
-          isAutoDispose: true,
-        );
+    : super(
+        retry: null,
+        name: r'filteredConversationsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
   FilteredConversationsProvider call(String userId) =>
       FilteredConversationsProvider._(argument: userId, from: this);
@@ -204,15 +218,15 @@ const historyActionsProvider = HistoryActionsProvider._();
 final class HistoryActionsProvider
     extends $AsyncNotifierProvider<HistoryActions, dynamic> {
   const HistoryActionsProvider._()
-      : super(
-          from: null,
-          argument: null,
-          retry: null,
-          name: r'historyActionsProvider',
-          isAutoDispose: true,
-          dependencies: null,
-          $allTransitiveDependencies: null,
-        );
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'historyActionsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
   @override
   String debugGetCreateSourceHash() => _$historyActionsHash();
@@ -231,11 +245,14 @@ abstract class _$HistoryActions extends $AsyncNotifier<dynamic> {
   void runBuild() {
     final created = build();
     final ref = this.ref as $Ref<AsyncValue<dynamic>, dynamic>;
-    final element = ref.element as $ClassProviderElement<
-        AnyNotifier<AsyncValue<dynamic>, dynamic>,
-        AsyncValue<dynamic>,
-        Object?,
-        Object?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<dynamic>, dynamic>,
+              AsyncValue<dynamic>,
+              Object?,
+              Object?
+            >;
     element.handleValue(ref, created);
   }
 }

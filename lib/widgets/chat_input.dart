@@ -106,23 +106,26 @@ class _ChatInputState extends State<ChatInput> {
             const SizedBox(width: AppTheme.spaceSm),
             IconButton.filled(
               onPressed: (_hasText && !widget.isLoading) ? _handleSend : null,
-              icon: widget.isLoading
-                  ? SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: theme.colorScheme.onPrimary,
-                      ),
-                    )
-                  : const Icon(Icons.send),
+              icon:
+                  widget.isLoading
+                      ? SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: theme.colorScheme.onPrimary,
+                        ),
+                      )
+                      : const Icon(Icons.send),
               style: IconButton.styleFrom(
-                backgroundColor: (_hasText && !widget.isLoading)
-                    ? theme.colorScheme.primary
-                    : theme.colorScheme.surfaceContainerHighest,
-                foregroundColor: (_hasText && !widget.isLoading)
-                    ? theme.colorScheme.onPrimary
-                    : theme.colorScheme.onSurface.withValues(alpha: 0.3),
+                backgroundColor:
+                    (_hasText && !widget.isLoading)
+                        ? theme.colorScheme.primary
+                        : theme.colorScheme.surfaceContainerHighest,
+                foregroundColor:
+                    (_hasText && !widget.isLoading)
+                        ? theme.colorScheme.onPrimary
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.3),
               ),
             ),
           ],

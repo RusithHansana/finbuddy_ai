@@ -65,42 +65,47 @@ class AppDrawer extends ConsumerWidget {
                             color: theme.colorScheme.primary,
                           );
                         },
-                        loading: () => Icon(
-                          Icons.person,
-                          size: 28,
-                          color: theme.colorScheme.primary,
-                        ),
-                        error: (_, __) => Icon(
-                          Icons.person,
-                          size: 28,
-                          color: theme.colorScheme.primary,
-                        ),
+                        loading:
+                            () => Icon(
+                              Icons.person,
+                              size: 28,
+                              color: theme.colorScheme.primary,
+                            ),
+                        error:
+                            (_, __) => Icon(
+                              Icons.person,
+                              size: 28,
+                              color: theme.colorScheme.primary,
+                            ),
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
                       child: userAsync.when(
-                        data: (user) => Text(
-                          'Welcome back, ${user?.displayName ?? 'Guest'}!',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: theme.colorScheme.onPrimary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        loading: () => Text(
-                          'Loading...',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: theme.colorScheme.onPrimary,
-                          ),
-                        ),
-                        error: (_, __) => Text(
-                          'Welcome back, Guest!',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: theme.colorScheme.onPrimary,
-                          ),
-                        ),
+                        data:
+                            (user) => Text(
+                              'Welcome back, ${user?.displayName ?? 'Guest'}!',
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                color: theme.colorScheme.onPrimary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                        loading:
+                            () => Text(
+                              'Loading...',
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                color: theme.colorScheme.onPrimary,
+                              ),
+                            ),
+                        error:
+                            (_, __) => Text(
+                              'Welcome back, Guest!',
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                color: theme.colorScheme.onPrimary,
+                              ),
+                            ),
                       ),
                     ),
                   ],
@@ -164,35 +169,38 @@ class AppDrawer extends ConsumerWidget {
                   // Show confirmation dialog
                   final shouldLogout = await showDialog<bool>(
                     context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Logout'),
-                      content: const Text('Are you sure you want to logout?'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('Cancel'),
+                    builder:
+                        (context) => AlertDialog(
+                          title: const Text('Logout'),
+                          content: const Text(
+                            'Are you sure you want to logout?',
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                Navigator.of(context).pop();
+                                try {
+                                  await ref
+                                      .read(authActionsProvider.notifier)
+                                      .signOut();
+                                } catch (e) {
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('Failed to logout: $e'),
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              child: const Text('Logout'),
+                            ),
+                          ],
                         ),
-                        TextButton(
-                          onPressed: () async {
-                            Navigator.of(context).pop();
-                            try {
-                              await ref
-                                  .read(authActionsProvider.notifier)
-                                  .signOut();
-                            } catch (e) {
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Failed to logout: $e'),
-                                  ),
-                                );
-                              }
-                            }
-                          },
-                          child: const Text('Logout'),
-                        ),
-                      ],
-                    ),
                   );
 
                   if (shouldLogout == true && context.mounted) {
@@ -225,7 +233,9 @@ class AppDrawer extends ConsumerWidget {
           return const SizedBox.shrink();
         }
 
-        return ref.watch(userConversationsProvider(user.uid)).when(
+        return ref
+            .watch(userConversationsProvider(user.uid))
+            .when(
               data: (conversations) {
                 if (conversations.isEmpty) {
                   return Padding(
@@ -234,10 +244,10 @@ class AppDrawer extends ConsumerWidget {
                       child: Text(
                         'No conversations yet',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withAlpha(153),
-                            ),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withAlpha(153),
+                        ),
                       ),
                     ),
                   );
@@ -248,38 +258,41 @@ class AppDrawer extends ConsumerWidget {
                     conversations.cast<Conversation>().take(5).toList();
 
                 return Column(
-                  children: recentConversations.map((conversation) {
-                    return _RecentChatItem(
-                      conversation: conversation,
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        context.goToChat(conversationId: conversation.id);
-                      },
-                    );
-                  }).toList(),
+                  children:
+                      recentConversations.map((conversation) {
+                        return _RecentChatItem(
+                          conversation: conversation,
+                          onTap: () {
+                            Navigator.of(context).pop();
+                            context.goToChat(conversationId: conversation.id);
+                          },
+                        );
+                      }).toList(),
                 );
               },
-              loading: () => const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Center(
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+              loading:
+                  () => const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Center(
+                      child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              error: (error, _) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: Center(
-                  child: Text(
-                    'Error loading chats',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              error:
+                  (error, _) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Center(
+                      child: Text(
+                        'Error loading chats',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.error,
                         ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
             );
       },
       loading: () => const SizedBox.shrink(),
